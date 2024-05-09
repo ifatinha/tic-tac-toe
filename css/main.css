@@ -1,0 +1,219 @@
+* {
+   box-sizing: border-box;
+   margin    : 0;
+   padding   : 0;
+}
+
+html,
+body {
+   height: 100%;
+   width : 100%;
+}
+
+body {
+   background: linear-gradient(90deg,
+         rgba(65, 185, 131, 1) 0%,
+         rgba(0, 212, 255, 1) 100%);
+   color      : #fff;
+   font-family: sans-serif;
+}
+
+.container {
+   align-items    : center;
+   display        : flex;
+   height         : 100%;
+   flex-direction : column;
+   gap            : 1rem;
+   justify-content: center;
+   width          : 100%;
+}
+
+.title {
+   font-size    : 1.5rem;
+   margin-bottom: 2rem;
+}
+
+.players {
+   align-items    : center;
+   display        : flex;
+   gap            : 1rem;
+   justify-content: center;
+   width          : 100%;
+}
+
+.players div {
+   align-items    : center;
+   display        : flex;
+   gap            : .4rem;
+   justify-content: center;
+}
+
+.players label {
+   display    : inline-block;
+   font-size  : 1.8rem;
+   font-weight: bold;
+}
+
+.players input {
+   background  : transparent;
+   border      : none;
+   border      : 1px solid transparent;
+   border-color: #fff;
+   color       : #fff;
+   font-size   : 1.2rem;
+   outline     : none;
+   padding     : 8px 12px;
+   transition  : .3s ease-in-out;
+   width       : 100%;
+}
+
+.players input::placeholder {
+   color: inherit;
+}
+
+#start {
+   margin: 1rem 0;
+}
+
+.turnPlayer {
+   margin-bottom: 1rem;
+}
+
+.gameBoard {
+   align-items          : center;
+   align-content        : center;
+   display              : grid;
+   grid-template-columns: repeat(3, auto);
+   justify-content      : center;
+   justify-items        : center;
+}
+
+.gameBoard.x .cursor-pointer:not(.x):not(.o):hover::after,
+.gameBoard.x .cursor-pointer:not(.x):not(.o):hover::before {
+   background: rgba(255, 255, 255, 0.3) !important;
+}
+
+.gameBoard.o .cursor-pointer:not(.x):not(.o):hover::after,
+.gameBoard.o .cursor-pointer:not(.x):not(.o):hover::before {
+   border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+:is(.x, .o) {
+   transition: .3s ease-in-out;
+}
+
+.cursor-pointer {
+   align-items    : center;
+   border         : 2px solid #fff;
+   cursor         : pointer;
+   display        : flex;
+   height         : 100px;
+   justify-content: center;
+   position       : relative;
+   width          : 100px;
+}
+
+:is(.cursor-pointer.o,
+   .cursor-pointer.x) {
+   cursor: not-allowed;
+}
+
+:is(.cursor-pointer:nth-child(1),
+   .cursor-pointer:nth-child(2),
+   .cursor-pointer:nth-child(3)) {
+   border-top-color: transparent;
+}
+
+:is(.cursor-pointer:nth-child(1),
+   .cursor-pointer:nth-child(4),
+   .cursor-pointer:nth-child(7)) {
+   border-left-color: transparent;
+}
+
+:is(.cursor-pointer:nth-child(7),
+   .cursor-pointer:nth-child(8),
+   .cursor-pointer:nth-child(9)) {
+   border-bottom-color: transparent;
+}
+
+:is(.cursor-pointer:nth-child(3),
+   .cursor-pointer:nth-child(6),
+   .cursor-pointer:nth-child(9)) {
+   border-right-color: transparent;
+}
+
+.cursor-pointer.x::before,
+.cursor-pointer.x::after,
+.gameBoard.x .cursor-pointer:not(.x):not(.o):hover::after,
+.gameBoard.x .cursor-pointer:not(.x):not(.o):hover::before {
+   background: #fff;
+   content   : "";
+   height    : calc(100px * 0.13);
+   position  : absolute;
+   width     : calc(100px * 0.8);
+}
+
+.cursor-pointer.x::before,
+.gameBoard.x .cursor-pointer:hover::before {
+   transform: rotate(45deg);
+}
+
+.cursor-pointer.x::after,
+.gameBoard.x .cursor-pointer:hover::after {
+   transform: rotate(-45deg);
+}
+
+.cursor-pointer.o::after,
+.cursor-pointer.o::before,
+.gameBoard.o .cursor-pointer:not(.x):not(.o):hover::after,
+.gameBoard.o .cursor-pointer:not(.x):not(.o):hover::before {
+   border       : 10px solid transparent;
+   border-color : #fff;
+   border-radius: 50%;
+   content      : "";
+   height       : calc(100px * 0.6);
+   position     : absolute;
+   width        : calc(100px * 0.6);
+}
+
+.winning-message {
+   align-items     : center;
+   background-color: rgba(0, 0, 0, 0.7);
+   display         : none;
+   flex-direction  : column;
+   gap             : 1rem;
+   inset           : 0;
+   justify-content : center;
+   position        : fixed;
+}
+
+.winning-message-button,
+#start {
+   background-color: rgba(65, 185, 131, 1);
+   border-radius   : 5px;
+   border          : none;
+   color           : #fff;
+   cursor          : pointer;
+   font-size       : 2.5rem;
+   padding         : 10px 15px;
+   transition      : .3s ease-in-out;
+}
+
+#start {
+   font-size: 1.2rem;
+}
+
+.winning-message-button:hover,
+#start:hover {
+   color           : rgba(65, 185, 131, 1);
+   background-color: #fff;
+}
+
+.winning-message-text {
+   color    : #fff;
+   font-size: 5rem;
+}
+
+.show-winning-message {
+   display: flex;
+}
