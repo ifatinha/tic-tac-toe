@@ -16,19 +16,23 @@
          <h1>Jogo da Velha</h1>
       </div>
 
-      <div class="players">
-         <div>
-            <label for="player1">X</label>
-            <input type="text" name="Player 01" id="player1" placeholder="Player name 01">
+      <form action="" class="form-players">
+         <div class="players">
+            <div>
+               <label for="player1">X</label>
+               <input type="text" name="Player 01" id="player1" placeholder="Player name 01" data-players>
+            </div>
+
+            <div>
+               <label for="player2">O</label>
+               <input type="text" name="Player 02" id="player2" placeholder="Player name 02" data-players>
+            </div>
          </div>
 
          <div>
-            <label for="player2">O</label>
-            <input type="text" name="Player 02" id="player2" placeholder="Player name 02">
+            <button class="button" id="button-start">Start</button>
          </div>
-      </div>
-
-      <button class="button" id="button-start">Start</button>
+      </form>
 
       <h2 class="turnPlayer"><span id="turnPlayer"></span></h2>
 
@@ -45,7 +49,7 @@
       </section>
 
       <div class="winning-message" data-winning-message>
-         <p class="winning-message-text" data-winning-message-text>X Venceu!</p>
+         <p class="winning-message-text" data-winning-message-text></p>
          <button class="button" id="winning-message-button" data-restart-button>
             Reiniciar!
          </button>

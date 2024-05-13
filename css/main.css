@@ -33,6 +33,10 @@ body {
    margin-bottom: 2rem;
 }
 
+.form-players {
+   text-align: center;
+}
+
 .players {
    align-items    : center;
    display        : flex;
@@ -117,7 +121,8 @@ body {
 
 :is(.cursor-pointer.o,
    .cursor-pointer.x) {
-   cursor: not-allowed;
+   cursor        : not-allowed;
+   pointer-events: none;
 }
 
 :is(.cursor-pointer:nth-child(1),
@@ -187,6 +192,10 @@ body {
    inset           : 0;
    justify-content : center;
    position        : fixed;
+}
+
+.winning-message.active {
+   display: flex;
 }
 
 .winning-message-text {
