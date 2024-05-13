@@ -1,6 +1,6 @@
 const boardRegions = document.querySelectorAll(".cursor-pointer");
 const gameBoard = document.querySelector("#gameBoard");
-const inputs = document.querySelectorAll("")
+const inputs = document.querySelectorAll("[data-players]");
 let vBoard = [];
 let turnPlayer = '';
 
@@ -82,18 +82,23 @@ function handleBoardClick(event) {
 }
 
 function initializeGame() {
-   vBoard = [['', '', ''], ['', '', ''], ['', '', '']];
-   turnPlayer = 'player1';
-   document.querySelector("h2").innerHTML = 'Sua vez <span id="turnPlayer"></span>';
-   updateTitle();
 
-   boardRegions.forEach((span) => {
-      span.classList.remove('x');
-      span.classList.remove('o');
-      span.innerText = "";
+   if (inputs[0].value.length > 0 && inputs[1].value.length > 0) {
+      vBoard = [['', '', ''], ['', '', ''], ['', '', '']];
+      turnPlayer = 'player1';
+      document.querySelector("h2").innerHTML = 'Sua vez <span id="turnPlayer"></span>';
+      updateTitle();
 
-      span.addEventListener('click', handleBoardClick);
-   })
+      boardRegions.forEach((span) => {
+         span.classList.remove('x');
+         span.classList.remove('o');
+         span.innerText = "";
+
+         span.addEventListener('click', handleBoardClick);
+      })
+   } else {
+      document.querySelector("h2").innerHTML = 'Para começar informe o nome dos jogadores.';
+   }
 }
 
 (() => {

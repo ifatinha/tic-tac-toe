@@ -33,10 +33,6 @@ body {
    margin-bottom: 2rem;
 }
 
-.form-players {
-   text-align: center;
-}
-
 .players {
    align-items    : center;
    display        : flex;
